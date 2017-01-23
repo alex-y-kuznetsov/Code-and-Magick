@@ -30,7 +30,7 @@ window.renderStatistics = function (ctx, names, times) {
   var step = histoHeight / (max - min);
   var columnIndent = 90;
 
-  for(var i = 0; i < times.length; i++) {
+  for (var i = 0; i < times.length; i++) {
     var name = names[i];
     var time = Math.round(times[i]);
     var height = step * (time - min);
