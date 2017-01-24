@@ -10,41 +10,51 @@ window.renderStatistics = function (ctx, names, times) {
 
   ctx.fillStyle = 'rgba(0, 0, 0, 1.0)';
   ctx.font = '16px PT Mono';
-  ctx.fillText('Ура, Вы победили!', 120, 40);
-  ctx.fillText('Список результатов:', 120, 60);
+
+  var messageY = 40;
+  var drawMessage = function (ctx, messageText) {
+
+    ctx.fillText(messageText, 120, messageY);
+    messageY += 20;
+  };
+  drawMessage(ctx, 'Ура, Вы победили!');
+  drawMessage(ctx, 'Список результатов:');
 
   var max = -1;
-  var min = Infinity;
 
   times.forEach(function (time) {
     if (time > max) {
       max = time;
     }
-    if (time < min) {
-      min = time;
-    }
   });
 
   var histoHeight = 150;
   var histoX = 140;
-  var step = histoHeight / (max - min);
+  var step = histoHeight / max;
   var columnIndent = 90;
 
-  for (var i = 0; i < times.length; i++) {
-    var name = names[i];
-    var time = Math.round(times[i]);
-    var height = step * (time - min);
-
+  var getColor = function (name) {
     if (name === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1.0)';
+      return 'rgba(255, 0, 0, 1.0)';
     } else {
-      ctx.fillStyle = ['rgba(0, 0, 255, ', (Math.random()).toFixed(1), ')'].join('');
+      return ['rgba(0, 0, 255, ', (Math.random()).toFixed(1), ')'].join('');
     }
+  };
+
+  var drawCol = function (ctx, name, time) {
+    time = Math.round(times[i]);
+    var height = step * time;
+
+    ctx.fillStyle = getColor(names[i]);
+
     ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
     ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
     ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
-  }
-};
 
-var canvas = document.querySelector('canvas');
-window.renderStatistics(canvas.getContext('2d'), ['Вы', 'Кекс', 'Катя', 'Игорь'], [10.32, 40.11, 30.18, 25.25]);
+  };
+
+  for (var i = 0; i < times.length; i++) {
+    drawCol(ctx, names[i], times[i], step);
+  }
+
+};
