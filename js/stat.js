@@ -15,15 +15,15 @@ var getColor = function (name) {
   }
 };
 
-var drawCol = function (ctx, name, time, step, columnIndent_i, histoX, histoHeight, height) {
+var drawCol = function (ctx, name, time, step, columnIndentI, histoX, histoHeight) {
   time = Math.round(time);
   var height = step * time;
 
   ctx.fillStyle = getColor(name);
 
-  ctx.fillText(time.toFixed(0), histoX + columnIndent_i, 90 + histoHeight - height);
-  ctx.fillRect(histoX + columnIndent_i, 100 + histoHeight - height, 40, height);
-  ctx.fillText(name, histoX + columnIndent_i, 100 + histoHeight + 20);
+  ctx.fillText(time.toFixed(0), histoX + columnIndentI, 90 + histoHeight - height);
+  ctx.fillRect(histoX + columnIndentI, 100 + histoHeight - height, 40, height);
+  ctx.fillText(name, histoX + columnIndentI, 100 + histoHeight + 20);
 };
 
 window.renderStatistics = function (ctx, names, times) {
