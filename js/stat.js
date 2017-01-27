@@ -44,7 +44,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
     if (time > max) {
-      max = time
+      max = time;
     }
   }
 
@@ -53,7 +53,7 @@ window.renderStatistics = function (ctx, names, times) {
   var step = histoHeight / max;
   var columnIndent = 90;
 
-  for (var i = 0; i < times.length; i++) {
+  for (i = 0; i < times.length; i++) {
     drawCol(ctx, names[i], times[i], step, columnIndent * i, histoX, histoHeight);
   }
 };
