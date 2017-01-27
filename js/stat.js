@@ -2,7 +2,6 @@
 
 var messageY = 40;
 var drawMessage = function (ctx, messageText) {
-
   ctx.fillText(messageText, 120, messageY);
   messageY += 20;
 };
@@ -37,16 +36,17 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 1.0)';
   ctx.font = '16px PT Mono';
 
+  messageY = 40;
   drawMessage(ctx, 'Ура, Вы победили!');
   drawMessage(ctx, 'Список результатов:');
 
   var max = -1;
-
-  times.forEach(function (time) {
+  for (var i = 0; i < times.length; i++) {
+    var time = times[i];
     if (time > max) {
-      max = time;
+      max = time
     }
-  });
+  }
 
   var histoHeight = 150;
   var histoX = 140;
