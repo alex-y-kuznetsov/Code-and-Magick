@@ -20,7 +20,7 @@ var drawCol = function (ctx, name, time, step, columnIndentI, histoX, histoHeigh
 
   ctx.fillStyle = getColor(name);
 
-  ctx.fillText(time.toFixed(0), histoX + columnIndentI, 90 + histoHeight - height);
+  ctx.fillText(time, histoX + columnIndentI, 90 + histoHeight - height);
   ctx.fillRect(histoX + columnIndentI, 100 + histoHeight - height, 40, height);
   ctx.fillText(name, histoX + columnIndentI, 100 + histoHeight + 20);
 };
