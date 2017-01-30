@@ -16,8 +16,8 @@ openButton.addEventListener('click', openCharSheet);
 closeButton.addEventListener('click', closeCharSheet);
 
 // Получение случайного числа
-var getRandomNumber = function () {
-  return Math.floor(Math.random() * wizardCoatColors.length)
+var getRandomNumber = function (arrayLength) {
+  return Math.floor(Math.random() * arrayLength);
 };
 
 // Изменение цвета плаща
@@ -32,7 +32,7 @@ var wizardCoatColors = [
 ];
 
 var changeWizardCoatColor = function () {
-  wizardCoat.style.fill = wizardCoatColors[getRandomNumber()];
+  wizardCoat.style.fill = wizardCoatColors[getRandomNumber(wizardCoatColors.length)];
 };
 wizardCoat.addEventListener('click', changeWizardCoatColor);
 
@@ -47,7 +47,7 @@ var wizardEyesColors = [
 ];
 
 var changeWizardEyesColor = function () {
-  wizardEyes.style.fill = wizardEyesColors[getRandomNumber()];
+  wizardEyes.style.fill = wizardEyesColors[getRandomNumber(wizardEyesColors.length)];
 };
 wizardEyes.addEventListener('click', changeWizardEyesColor);
 
@@ -62,6 +62,6 @@ var wizardFireballColors = [
 ];
 
 var changeWizardFireballColor = function () {
-  wizardFireball.style.backgroundColor = wizardFireballColors[getRandomNumber()];
+  wizardFireball.style.backgroundColor = wizardFireballColors[getRandomNumber(wizardFireballColors.length)];
 };
 wizardFireball.addEventListener('click', changeWizardFireballColor);
