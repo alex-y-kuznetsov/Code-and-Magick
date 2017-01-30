@@ -5,17 +5,17 @@ var openButton = document.querySelector('.setup-open');
 var closeButton = document.querySelector('.setup-close');
 var setupToggler = document.querySelector('.overlay');
 
-var openCharSheet = function() {
+var openCharSheet = function () {
   setupToggler.classList.remove('invisible');
 };
-var closeCharSheet = function() {
+var closeCharSheet = function () {
   setupToggler.classList.add('invisible');
 };
 
 openButton.addEventListener('click', openCharSheet);
 closeButton.addEventListener('click', closeCharSheet);
 
-//Изменение цвета плаща
+// Изменение цвета плаща
 var wizardCoat = document.querySelector('#wizard-coat');
 var wizardCoatColors = [
   'rgb(101, 137, 164)',
@@ -26,7 +26,7 @@ var wizardCoatColors = [
   'rgb(0, 0, 0)'
 ];
 
-var changeWizardCoatColor = function() {
+var changeWizardCoatColor = function () {
   var randomColor = Math.floor(Math.random() * wizardCoatColors.length);
   wizardCoat.style.fill = wizardCoatColors[randomColor];
 };
@@ -42,7 +42,7 @@ var wizardEyesColors = [
   'green'
 ];
 
-var changeWizardEyesColor = function() {
+var changeWizardEyesColor = function () {
   var randomColor = Math.floor(Math.random() * wizardCoatColors.length);
   wizardEyes.style.fill = wizardEyesColors[randomColor];
 };
@@ -58,7 +58,7 @@ var wizardFireballColors = [
   '#e6e848'
 ];
 
-var changeWizardFireballColor = function() {
+var changeWizardFireballColor = function () {
   var randomColor = Math.floor(Math.random() * wizardCoatColors.length);
   wizardFireball.style.backgroundColor = wizardFireballColors[randomColor];
 };
