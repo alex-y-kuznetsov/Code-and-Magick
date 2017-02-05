@@ -1,19 +1,82 @@
 'use strict';
 
-// Открытие и закрытие окна персонажа
+var ESCAPE_KEY_CODE = 27;
+var ENTER_KEY_CODE = 13;
+
 var openButton = document.querySelector('.setup-open');
 var closeButton = document.querySelector('.setup-close');
 var setupToggler = document.querySelector('.overlay');
+var submitButton = document.querySelector('.setup-submit');
 
-var openCharSheet = function () {
-  setupToggler.classList.remove('invisible');
+// Распределение ролей
+var assignAttributes = function () {
+  setupToggler.setAttribute('role', 'dialog');
+  setupToggler.setAttribute('aria-labelledby', 'character-sheet');
+  openButton.setAttribute('role', 'button');
+  openButton.setAttribute('tabindex', '0');
+  openButton.setAttribute('aria-pressed', 'false');
+  closeButton.setAttribute('role', 'button');
+  closeButton.setAttribute('tabindex', '0');
+  closeButton.setAttribute('aria-pressed', 'false');
+  submitButton.setAttribute('role', 'button');
+  submitButton.setAttribute('tabindex', '0');
+  submitButton.setAttribute('aria-pressed', 'false');
 };
-var closeCharSheet = function () {
+assignAttributes();
+
+// Проверка нажатия кнопок Enter и Escape
+var isEnter = function (evt) {
+  return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+};
+var isEscape = function (evt) {
+  return evt.keyCode && evt.keyCode === ESCAPE_KEY_CODE;
+};
+
+// Изменение статуса aria-pressed
+var toggleAria = function (element) {
+  var ariaPressed = (element.getAttribute('aria-pressed') === 'true');
+  if (ariaPressed) {
+    element.setAttribute('aria-pressed', 'false')
+  } else {
+    element.setAttribute('aria-pressed', 'true')
+  }
+};
+
+// Открытие и закрытие окна персонажа
+var escapeCharSheet = function (evt) {
+  if (isEscape(evt)) {
+    setupToggler.classList.add('invisible');
+  }
+};
+var submitCharSheet = function (evt) {
+  toggleAria(submitButton);
   setupToggler.classList.add('invisible');
+  if (isEnter(evt)) {
+    setupToggler.classList.add('invisible');
+  }
+};
+var openCharSheet = function (evt) {
+  toggleAria(openButton);
+  setupToggler.classList.remove('invisible');
+  if (isEnter(evt)) {
+    setupToggler.classList.remove('invisible');
+    document.addEventListener('keydown', escapeCharSheet);
+  }
+};
+var closeCharSheet = function (evt) {
+  toggleAria(closeButton);
+  setupToggler.classList.add('invisible');
+  if (isEnter(evt)) {
+    setupToggler.classList.add('invisible');
+  }
 };
 
 openButton.addEventListener('click', openCharSheet);
+openButton.addEventListener('keydown', openCharSheet);
 closeButton.addEventListener('click', closeCharSheet);
+closeButton.addEventListener('keydown', closeCharSheet);
+submitButton.addEventListener('click', submitCharSheet);
+submitButton.addEventListener('keydown', submitCharSheet);
 
 // Валидация формы
 var userName = document.querySelector('.setup-user-name');
