@@ -36,9 +36,9 @@ var isEscape = function (evt) {
 var toggleAria = function (element) {
   var ariaPressed = (element.getAttribute('aria-pressed') === 'true');
   if (ariaPressed) {
-    element.setAttribute('aria-pressed', 'false')
+    element.setAttribute('aria-pressed', 'false');
   } else {
-    element.setAttribute('aria-pressed', 'true')
+    element.setAttribute('aria-pressed', 'true');
   }
 };
 
