@@ -8,22 +8,6 @@ var closeButton = document.querySelector('.setup-close');
 var setupToggler = document.querySelector('.overlay');
 var submitButton = document.querySelector('.setup-submit');
 
-// Распределение ролей
-var assignAttributes = function () {
-  setupToggler.setAttribute('role', 'dialog');
-  setupToggler.setAttribute('aria-labelledby', 'character-sheet');
-  openButton.setAttribute('role', 'button');
-  openButton.setAttribute('tabindex', '0');
-  openButton.setAttribute('aria-pressed', 'false');
-  closeButton.setAttribute('role', 'button');
-  closeButton.setAttribute('tabindex', '0');
-  closeButton.setAttribute('aria-pressed', 'false');
-  submitButton.setAttribute('role', 'button');
-  submitButton.setAttribute('tabindex', '0');
-  submitButton.setAttribute('aria-pressed', 'false');
-};
-assignAttributes();
-
 // Проверка нажатия кнопок Enter и Escape
 var isEnter = function (evt) {
   return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
