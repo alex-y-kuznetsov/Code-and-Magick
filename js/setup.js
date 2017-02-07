@@ -34,6 +34,7 @@ var escapeCharSheet = function (evt) {
 };
 var submitCharSheet = function (evt) {
   toggleAria(submitButton);
+  evt.preventDefault();
   setupToggler.classList.add('invisible');
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
