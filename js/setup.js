@@ -35,14 +35,12 @@ var escapeCharSheet = function (evt) {
 var submitCharSheet = function (evt) {
   toggleAria(submitButton);
   evt.preventDefault();
-  setupToggler.classList.add('invisible');
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
   }
 };
 var openCharSheet = function (evt) {
   toggleAria(openButton);
-  setupToggler.classList.remove('invisible');
   if (isEnter(evt)) {
     setupToggler.classList.remove('invisible');
     document.addEventListener('keydown', escapeCharSheet);
