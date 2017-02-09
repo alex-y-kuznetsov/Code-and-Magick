@@ -16,6 +16,11 @@ var isEscape = function (evt) {
   return evt.keyCode && evt.keyCode === ESCAPE_KEY_CODE;
 };
 
+// Проверка на тип события click
+var isClick = function (evt) {
+  return evt.type === 'click';
+};
+
 // Изменение статуса aria-pressed
 var toggleAria = function (element) {
   var ariaPressed = (element.getAttribute('aria-pressed') === 'true');
@@ -35,14 +40,18 @@ var escapeCharSheet = function (evt) {
 var submitCharSheet = function (evt) {
   toggleAria(submitButton);
   evt.preventDefault();
-  setupToggler.classList.add('invisible');
+  if (isClick(evt)) {
+    setupToggler.classList.add('invisible');
+  };
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
   }
 };
 var openCharSheet = function (evt) {
   toggleAria(openButton);
-  setupToggler.classList.remove('invisible');
+  if (isClick(evt)) {
+    setupToggler.classList.remove('invisible');
+  };
   if (isEnter(evt)) {
     setupToggler.classList.remove('invisible');
     document.addEventListener('keydown', escapeCharSheet);
@@ -50,7 +59,9 @@ var openCharSheet = function (evt) {
 };
 var closeCharSheet = function (evt) {
   toggleAria(closeButton);
-  setupToggler.classList.add('invisible');
+  if (isClick(evt)) {
+    setupToggler.classList.add('invisible');
+  };
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
   }
