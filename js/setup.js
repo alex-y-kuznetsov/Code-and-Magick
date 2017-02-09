@@ -42,7 +42,7 @@ var submitCharSheet = function (evt) {
   evt.preventDefault();
   if (isClick(evt)) {
     setupToggler.classList.add('invisible');
-  };
+  }
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
   }
@@ -51,7 +51,7 @@ var openCharSheet = function (evt) {
   toggleAria(openButton);
   if (isClick(evt)) {
     setupToggler.classList.remove('invisible');
-  };
+  }
   if (isEnter(evt)) {
     setupToggler.classList.remove('invisible');
     document.addEventListener('keydown', escapeCharSheet);
@@ -61,7 +61,7 @@ var closeCharSheet = function (evt) {
   toggleAria(closeButton);
   if (isClick(evt)) {
     setupToggler.classList.add('invisible');
-  };
+  }
   if (isEnter(evt)) {
     setupToggler.classList.add('invisible');
   }
